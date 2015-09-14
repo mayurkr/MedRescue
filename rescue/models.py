@@ -22,15 +22,15 @@ class Patient(models.Model):
     latitude = models.FloatField()
     longitude = models.FloatField()
     called_time = models.DateField(default=timezone.now)
-    choices = (
+    status = (
         ('Y', 'Attended'),
         ('N', 'Unattended'),
     )
-    attended = models.CharField(max_length=1, choices=choices, default='N')
-    ambulance = models.ForeignKey(Ambulance, null=True)
+#    attended = models.CharField(max_length=1, choices=status, default='N')
+    ambulance = models.ForeignKey(Ambulance, null=True, blank=True,)
 
     def __str__(self):
-        if self.attended == 'Y':
-            return self.pk, " attended by" + self.ambulance.name
+        if self.ambulance:
+            return str(self.pk) + " attended by" + self.ambulance.name
         else:
-            return self.pk
+            return str(self.pk)

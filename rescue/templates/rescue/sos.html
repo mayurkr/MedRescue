@@ -1,0 +1,38 @@
+{% load staticfiles %}
+<html>
+<head>
+<!-- Include meta tag to ensure proper rendering and touch zooming -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Include jQuery Mobile stylesheets -->
+<link rel="stylesheet" href="{% static 'jquery/jquery.mobile-1.4.5.min.css' %}">
+
+<!-- Include the jQuery library -->
+<script src="{% static 'jquery/jquery-1.11.3.min.js'  %}"></script>
+
+<!-- Include the jQuery Mobile library -->
+<script src="{% static 'jquery/jquery.mobile-1.4.5.min.js'  %}"></script>
+
+</head>
+
+<body>
+<div data-role="page">
+
+  <div data-role="header">
+    <h1>Mobile Rescue</h1>
+
+  </div>
+	<div data-role="content">
+	<p>Press this button to generate a distress call</p>
+	<input type="submit" value="Help Me!!" icon="star" />
+
+	</div>  
+
+  <div data-role="footer">
+    <h1>Dev by MR & PH</h1>
+  </div>
+
+</div>
+</body>
+
+</html>
