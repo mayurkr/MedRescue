@@ -18,10 +18,10 @@ class Ambulance(models.Model):
 
 
 class Patient(models.Model):
-    name = models.CharField(default="", max_length=30)
+    name = models.CharField(default="", max_length=30, blank=True)
     latitude = models.FloatField()
     longitude = models.FloatField()
-    called_time = models.DateField(default=timezone.now)
+    called_time = models.DateTimeField(default=timezone.now)
     status = (
         ('Y', 'Attended'),
         ('N', 'Unattended'),
