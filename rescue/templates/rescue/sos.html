@@ -51,11 +51,11 @@
 
         console.log(l);
 
-        $.post('/SOS', l  );
+        $.post('/', l  );
     }
     function showPosition(position)
     {
-        $.post('/SOS',
+        $.post('/',
             position.coords,
             function(data, status){
                 $("#output").text(data);
