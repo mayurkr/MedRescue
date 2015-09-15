@@ -1,0 +1,73 @@
+<html>
+<head>
+<!-- Include meta tag to ensure proper rendering and touch zooming -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Include jQuery Mobile stylesheets -->
+<link rel="stylesheet" href="jquery/jquery.mobile-1.4.5.min.css">
+
+<!-- Include the jQuery library -->
+<script src="jquery/jquery-1.11.3.min.js"></script>
+
+<script>
+  /*
+ * Google Maps documentation: http://code.google.com/apis/maps/documentation/javascript/basics.html
+ * Geolocation documentation: http://dev.w3.org/geo/api/spec-source.html
+ */
+$( document ).on( "pageinit", "#map-page", function() {
+    var defaultLatLng = new google.maps.LatLng(34.0983425, -118.3267434);  // Default to Hollywood, CA when no geolocation support
+    if ( navigator.geolocation ) {
+        function success(pos) {
+            // Location found, show map with these coordinates
+            drawMap(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+        }
+        function fail(error) {
+            drawMap(defaultLatLng);  // Failed to find location, show default map
+        }
+        // Find the users current position.  Cache the location for 5 minutes, timeout after 6 seconds
+        navigator.geolocation.getCurrentPosition(success, fail, {maximumAge: 500000, enableHighAccuracy:true, timeout: 6000});
+    } else {
+        drawMap(defaultLatLng);  // No geolocation support, show default map
+    }
+    function drawMap(latlng) {
+        var myOptions = {
+            zoom: 10,
+            center: latlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
+        // Add an overlay to the map of current lat/lng
+        var marker = new google.maps.Marker({
+            position: latlng,
+            map: map,
+            title: "Greetings!"
+        });
+    }
+});
+</script>
+
+<!-- Include the jQuery Mobile library -->
+<script src="jquery/jquery.mobile-1.4.5.min.js"></script>
+
+</head>
+
+<body>
+<div data-role="page" id="map-page" data-url="map-page">
+
+  <div data-role="header">
+    <h1>Mobile Rescue</h1>
+  </div>
+    
+    <div class="ui-content" id="map-canvas">
+       
+    </div>
+
+
+  <div data-role="footer"  data-position="fixed">
+    <h1>Dev by MR & PH</h1>
+  </div>
+
+</div>
+</body>
+
+</html>
