@@ -55,9 +55,18 @@
     }
     function showPosition(position)
     {
-        $.post('/SOS', position.coords);
+        $.post('/SOS',
+            position.coords,
+            function(data, status){
+                $("#output").text(data);
+            });
     }
-    getLocation();
+//    getLocation();
+$(document).on('click','#but', function(){ //depreciated method
+      // console.log($('input[name=option]:checked', '#myForm').val());
+      getLocation();
+      
+   });
 
 </script>
 </head>
@@ -71,7 +80,8 @@
   </div>
 	<div data-role="content">
 	<p>Press this button to generate a distress call</p>
-	<input type="submit" value="Help Me!!" icon="star" />
+    <div id="output"><div>
+	<button id="but"  >Help Me!!</button>
 
 	</div>  
 

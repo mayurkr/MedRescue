@@ -7,6 +7,7 @@ class Ambulance(models.Model):
     operator = models.CharField(max_length=30)
     latitude = models.FloatField()
     longitude = models.FloatField()
+    email = models.EmailField(default="driver@ambulance.com")
     availabilty = (
         ('Y', 'Yes'),
         ('N', 'No'),
