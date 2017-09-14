@@ -1,8 +1,8 @@
-# mr_ph
+# MedRescue
 
-## Medical Rescue Mobile Web App
+### Medical Rescue Mobile Web App
 
-## Platforms Used
+#### Platforms Used
 
  * Python 3.4
  * Django
